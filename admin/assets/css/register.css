@@ -1,0 +1,270 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap");
+
+/* Reset dan Variabel Warna */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --teal-dark: #1c638f;
+  --teal-mid: #1c638f;
+  --teal-light: #36acae;
+  --white: #ffffff;
+  --gray-100: #f4f6f8;
+  --gray-300: #d1d5db;
+  --gray-500: #6b7280;
+  --gray-800: #1f2937;
+  --radius-sm: 8px;
+  --radius-lg: 28px;
+}
+
+/* Body dan Layout utama */
+body {
+  font-family: "DM Sans", sans-serif;
+  background: linear-gradient(
+    160deg,
+    var(--teal-dark) 0%,
+    var(--teal-light) 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-wrapper {
+  display: flex;
+  width: 860px;
+  min-height: 520px;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Bagian Kiri dari Form Registrasi */
+.auth-left {
+  width: 320px;
+  background: linear-gradient(
+    160deg,
+    var(--teal-dark) 0%,
+    var(--teal-light) 100%
+  );
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+/* Logo dan Brand */
+.logo-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px auto;
+  flex-shrink: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.logo-circle img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+.logo-placeholder {
+  font-family: "Sora", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-box {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: -5px;
+}
+.auth-brand h1 {
+  font-family: "Sora", sans-serif;
+  font-size: 36px;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 4px;
+  margin-top: 6px;
+}
+
+.auth-brand p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.9;
+  letter-spacing: 0.5px;
+}
+
+/* Bagian Kanan dari Form Registrasi */
+.auth-right {
+  flex: 1;
+  background: var(--white);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.auth-tabs {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  display: flex;
+  background: var(--gray-100);
+  border-radius: 99px;
+  padding: 4px;
+}
+
+.auth-tabs a {
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 99px;
+  text-decoration: none;
+  color: var(--black-500);
+}
+
+.auth-tabs a.active {
+  background: var(--teal-mid);
+  color: var(--white);
+}
+
+/* Form Registrasi */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--gray-800);
+  margin-bottom: 5px;
+}
+
+.field input {
+  width: 100%;
+  padding: 11px 14px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13.5px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+.field input:focus {
+  border-color: var(--teal-mid);
+  box-shadow: 0 0 0 3px rgba(14, 144, 144, 0.12);
+}
+
+.field-group {
+  display: flex;
+  gap: 12px;
+}
+.field-group .field {
+  flex: 1;
+}
+
+.auth-form p {
+  font-size: 12.5px;
+  color: var(--gray-500);
+  text-align: center;
+}
+
+.auth-form p a {
+  color: var(--teal-mid);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Tombol Register */
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--teal-mid) 0%,
+    var(--teal-dark) 100%
+  );
+  color: var(--white);
+  font-family: "Sora", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(14, 144, 144, 0.3);
+}
+.btn-submit:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding-right: 42px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.toggle-password:hover {
+  color: var(--teal-mid);
+}
