@@ -1,9 +1,19 @@
 <?php
 session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+if (isset($_SESSION['id_user'])) {
+  header("Location: ../user/user_dashboard.php");
+  exit();
+}
 require_once "../config/Koneksi.php";
 
 $error = $_SESSION['error'] ?? '';
 unset($_SESSION['error']);
+
+$notif = $_SESSION['notif'] ?? null;
+unset($_SESSION['notif']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email    = $_POST['email'];
@@ -19,29 +29,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $result = $stmt->get_result();
   $user = $result->fetch_assoc();
 
-  if ($user && password_verify($password, $user['password'])) {
+  if ($user && $password === $user['password']) {
 
-    //cek status verifikasi
+    // cek status verifikasi
     if ($user['status_verifikasi'] === 'menunggu') {
-      $_SESSION['error'] = "Akun Anda sedang menunggu verifikasi";
-    } else if ($user['status_verifikasi'] === 'ditolak') {
+      $_SESSION['error'] = "Akun Anda sedang menunggu verifikasi.";
+      $_SESSION['notif'] = ['pesan' => 'Akun Anda belum diverifikasi.', 'tipe' => 'warning'];
+    } elseif ($user['status_verifikasi'] === 'ditolak') {
       $_SESSION['error'] = 'Akun anda telah ditolak. Silakan hubungi admin untuk informasi lebih lanjut.';
+      $_SESSION['notif'] = ['pesan' => 'Akun Anda telah ditolak.', 'tipe' => 'error'];
+    } elseif ((int) $user['status_aktif'] === 0) {
+      $_SESSION['error'] = 'Akun Anda telah dinonaktifkan. Silakan hubungi admin untuk mengaktifkan kembali.';
+      $_SESSION['notif'] = ['pesan' => 'Akun Anda dinonaktifkan.', 'tipe' => 'error'];
     } else {
-      // status jika sudah diverifikasi
       $_SESSION['id_user'] = $user['id_user'];
-      $_SESSION['nama'] = $user['nama'];
-      $_SESSION['role'] = $user['role'];
-      $_SESSION['email'] = $user['email'];
+      $_SESSION['nama']    = $user['nama'];
+      $_SESSION['role']    = $user['role'];
+      $_SESSION['email']   = $user['email'];
+      $_SESSION['notif']   = ['pesan' => 'Selamat datang, ' . $user['nama'] . '!', 'tipe' => 'success'];
 
       if ($user['role'] === 'admin') {
         header("Location: ../dashboard.php");
       } else {
-        header("Location: ../../user/dashboard.php");
+        header("Location: ../user/user_dashboard.php");
       }
       exit();
     }
   } else {
     $_SESSION['error'] = "Email atau password salah.";
+    $_SESSION['notif'] = ['pesan' => 'Email atau password salah.', 'tipe' => 'error'];
   }
   header("Location: login.php");
   exit();
@@ -126,6 +142,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
     }
   </script>
+  <div id="popupContainer" style="position:fixed; top:24px; right:24px; z-index:9999; display:flex; flex-direction:column; gap:10px; pointer-events:none;"></div>
+
+  <script>
+    function showPopup(message, type = 'success') {
+      const icons = {
+        success: '✅',
+        error: '❌',
+        warning: '⚠️'
+      };
+      const container = document.getElementById('popupContainer');
+      const item = document.createElement('div');
+      item.className = `popup-item popup-${type}`;
+      item.innerHTML = `
+        <span class="popup-icon">${icons[type]}</span>
+        <span>${message}</span>
+        <button class="popup-close" onclick="closePopup(this)">✕</button>
+    `;
+      container.appendChild(item);
+      setTimeout(() => closePopup(item.querySelector('.popup-close')), 3000);
+    }
+
+    function closePopup(btn) {
+      const item = btn.closest('.popup-item');
+      item.style.animation = 'slideOut 0.3s ease forwards';
+      setTimeout(() => item.remove(), 300);
+    }
+  </script>
+
+  <?php if (!empty($notif)): ?>
+    <script>
+      showPopup("<?= $notif['pesan'] ?>", "<?= $notif['tipe'] ?>");
+    </script>
+  <?php endif; ?>
 </body>
 
 </html>

@@ -1,0 +1,412 @@
+/* Mengatur container khusus halaman detail */
+.dp-container {
+  padding: 10 px 3% 50px 3%;
+  max-width: 100%;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 14px;
+  color: #6d7588;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Menghindari berantakan di layar hp */
+}
+
+.breadcrumb a {
+  color: #1d6fa5;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+  color: #136395;
+  text-decoration: underline;
+}
+
+/* Style khusus untuk teks halaman aktif/terakhir */
+.breadcrumb .current {
+  color: #31353b;
+  font-weight: 600;
+}
+
+/* Mengontrol spasi simbol panah secara konsisten berukuran pixel */
+.breadcrumb .separator {
+  margin: 0 10px;
+  color: #bfc9d9;
+  user-select: none; /* Simbol tidak ikut tersorot saat teks diblok */
+}
+/* Layout Utama: 3 Kolom */
+.dp-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr 300px;
+  gap: 30px;
+  align-items: start;
+}
+
+/* --- KOLOM 1: GALERI --- */
+.dp-gallery {
+  position: relative !important; /* Pastikan non-sticky dan tidak terpengaruh aturan lain */
+  top: auto !important;
+  z-index: 0;
+}
+
+.main-image-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7e9;
+  margin-bottom: 10px;
+}
+
+.main-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Pastikan gambar tidak memiliki positioning yang membuatnya bergerak saat scroll */
+.main-image-container,
+.main-image-container img {
+  position: relative !important;
+  transform: none !important;
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.thumbnail:hover {
+  border-color: #1d6fa5;
+}
+
+.thumbnail.active {
+  border-color: #1d6fa5;
+  opacity: 0.7;
+}
+
+/* --- KOLOM 2: INFO PRODUK --- */
+.dp-info {
+  padding-right: 10px;
+}
+
+.dp-title {
+  font-size: 24px;
+  color: #31353b;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.dp-stats {
+  font-size: 13px;
+  color: #6d7588;
+  margin-bottom: 15px;
+}
+
+.dp-price {
+  font-size: 32px;
+  font-weight: bold;
+  color: #31353b;
+  margin-bottom: 20px;
+}
+
+/* Spesifikasi Meta */
+.dp-meta {
+  border-top: 1px solid #e5e7e9;
+  border-bottom: 1px solid #e5e7e9;
+  padding: 15px 0;
+  margin-bottom: 20px;
+}
+
+.meta-item {
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.meta-item:last-child {
+  margin-bottom: 0;
+}
+
+.meta-label {
+  width: 120px;
+  color: #6d7588;
+}
+
+.meta-value {
+  color: #31353b;
+  font-weight: 500;
+}
+
+.link-style {
+  color: #1d6fa5;
+  cursor: pointer;
+}
+
+.badge-kondisi {
+  background-color: #e5f9f6;
+  color: #03ac0e;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Deskripsi */
+.dp-description h3 {
+  font-size: 16px;
+  color: #31353b;
+  margin-bottom: 10px;
+}
+
+.desc-content {
+  font-size: 14px;
+  color: #31353b;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Penjual */
+.dp-seller {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-top: 1px solid #e5e7e9;
+}
+
+.seller-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1d6fa5;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
+  background-position: center;
+  background-size: 60%;
+  background-repeat: no-repeat;
+}
+
+.seller-details h4 {
+  font-size: 16px;
+  color: #31353b;
+  margin-bottom: 4px;
+}
+
+.seller-details p {
+  font-size: 13px;
+  color: #6d7588;
+}
+
+/* --- KOLOM 3: AKSI (STICKY CARD) --- */
+.dp-action-sidebar {
+  position: relative !important; /* Non-sticky: jangan bergerak saat scroll */
+  top: auto !important;
+  z-index: 1;
+}
+
+.action-card {
+  border: 1px solid #e5e7e9;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  background-color: #fff;
+}
+
+.action-card h3 {
+  font-size: 16px;
+  color: #31353b;
+  margin-bottom: 15px;
+}
+
+.action-card-title {
+  font-size: 16px;
+  color: #31353b;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.chat-hint {
+  font-size: 13px;
+  color: #6d7588;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.safety-badge {
+  display: inline-block;
+  font-size: 12px;
+  color: #f94d63; /* Warna merah soft penanda barang unik/pribadi */
+  background-color: #fff0f1;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Grouping tombol agar ada jarak yang pas */
+.action-buttons-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* Reset margin bawah tombol bawaan agar serasi dengan gap flex */
+.action-buttons-group .btn {
+  margin-bottom: 0 !important;
+}
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: none;
+  transition: 0.2s;
+}
+
+.btn-cart {
+  background-color: #fff;
+  border: 1px solid #1d6fa5;
+  color: #1d6fa5;
+}
+
+.btn-cart:hover {
+  background-color: #f5f9fc;
+}
+
+.btn-buy {
+  background-color: #1d6fa5;
+  color: #fff;
+}
+
+.btn-buy:hover {
+  background-color: #155782;
+}
+
+.action-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e5e7e9;
+}
+
+.btn-chat {
+  background: none;
+  border: none;
+  color: #31353b;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-chat:hover {
+  color: #1d6fa5;
+}
+
+/* --- PRODUK TERKAIT --- */
+.related-section {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 2px solid #f0f3f7;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 992px) {
+  .dp-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .dp-gallery,
+  .dp-action-sidebar {
+    position: static;
+  }
+
+  .main-image-container {
+    aspect-ratio: 4/3;
+  }
+}
+
+.btn-checkout {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 12px;
+
+  padding: 14px;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  background: #2563eb;
+
+  color: #fff;
+
+  font-weight: 600;
+
+  border-radius: 8px;
+
+  transition: 0.3s;
+}
+
+.btn-checkout:hover {
+  background: #1d4ed8;
+}
+
+.btn-disabled {
+  width: 100%;
+
+  margin-top: 12px;
+
+  padding: 14px;
+
+  background: #d1d5db;
+
+  color: #555;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: not-allowed;
+}
+
+.product-extra-info {
+  margin-top: 15px;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+}
+
+.product-extra-info p {
+  margin: 6px 0;
+}

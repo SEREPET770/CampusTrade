@@ -11,11 +11,11 @@
 }
 
 :root {
-  --teal-dark: #1c638f;
-  --teal-mid: #1c638f;
-  --teal-light: #36acae;
+  --primary: #1d6fa5;
+  --primary-dark: #184f7a;
+  --primary-light: #3b8ec4;
   --white: #ffffff;
-  --gray-100: #f4f6f8;
+  --gray-100: #f5f6f8;
   --gray-300: #d1d5db;
   --gray-500: #6b7280;
   --gray-800: #1f2937;
@@ -28,8 +28,8 @@ body {
   font-family: "DM Sans", sans-serif;
   background: linear-gradient(
     160deg,
-    var(--teal-dark) 0%,
-    var(--teal-light) 100%
+    rgba(29, 111, 165, 0.28) 0%,
+    #e9eef6 100%
   );
   min-height: 100vh;
   display: flex;
@@ -49,12 +49,8 @@ body {
 /* Bagian Kiri dari Form Registrasi */
 .auth-left {
   width: 320px;
-  background: linear-gradient(
-    160deg,
-    var(--teal-dark) 0%,
-    var(--teal-light) 100%
-  );
-  border-radius: var(--radius-lg);
+  background: var(--primary);
+  border-radius: 0;
   padding: 48px 40px;
   display: flex;
   flex-direction: column;
@@ -69,7 +65,7 @@ body {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   display: flex;
   align-items: center;
@@ -80,10 +76,9 @@ body {
   overflow: hidden;
 }
 .logo-circle img {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  border-radius: 50%;
   display: block;
 }
 .logo-placeholder {
@@ -135,7 +130,7 @@ body {
 .auth-right {
   flex: 1;
   background: var(--white);
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  border-radius: 0;
   padding: 32px 36px;
   display: flex;
   flex-direction: column;
@@ -163,7 +158,7 @@ body {
 }
 
 .auth-tabs a.active {
-  background: var(--teal-mid);
+  background: var(--primary);
   color: var(--white);
 }
 
@@ -222,11 +217,7 @@ body {
 .btn-submit {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(
-    135deg,
-    var(--teal-mid) 0%,
-    var(--teal-dark) 100%
-  );
+  background: var(--primary);
   color: var(--white);
   font-family: "Sora", sans-serif;
   font-size: 14px;
@@ -234,7 +225,7 @@ body {
   border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(14, 144, 144, 0.3);
+  box-shadow: 0 8px 20px rgba(29, 111, 165, 0.2);
 }
 .btn-submit:hover {
   opacity: 0.9;
@@ -267,4 +258,89 @@ body {
 
 .toggle-password:hover {
   color: var(--teal-mid);
+}
+
+/* =====================
+   POPUP NOTIF
+===================== */
+#popupContainer {
+  position: fixed !important;
+  top: 24px !important;
+  right: 24px !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  pointer-events: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.popup-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 14px 18px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  min-width: 280px !important;
+  max-width: 360px !important;
+  animation: slideIn 0.3s ease !important;
+  pointer-events: all !important;
+}
+
+.popup-success {
+  background: #f0fdf4 !important;
+  border-left: 4px solid #16a34a !important;
+  color: #15803d !important;
+}
+.popup-error {
+  background: #fef2f2 !important;
+  border-left: 4px solid #dc2626 !important;
+  color: #b91c1c !important;
+}
+.popup-warning {
+  background: #fffbeb !important;
+  border-left: 4px solid #f59e0b !important;
+  color: #b45309 !important;
+}
+
+.popup-icon {
+  font-size: 18px !important;
+}
+.popup-close {
+  margin-left: auto !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  color: inherit !important;
+  opacity: 0.6 !important;
+  padding: 0 !important;
+}
+.popup-close:hover {
+  opacity: 1 !important;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }

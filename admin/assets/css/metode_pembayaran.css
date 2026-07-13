@@ -1,0 +1,327 @@
+.mp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.mp-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+
+.mp-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+}
+
+.mp-card.nonaktif {
+  opacity: 0.55;
+}
+
+/* ════════════════════════════════════════════
+   CARD HEADER
+════════════════════════════════════════════ */
+.mp-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #f0f2f5;
+  background: #fafbfc;
+}
+
+.mp-jenis-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.mp-jenis-icon.bank {
+  background: #e8f0fe;
+}
+.mp-jenis-icon.ewallet {
+  background: #d1fae5;
+}
+.mp-jenis-icon.qris {
+  background: #fef3c7;
+}
+
+.mp-head-info {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.mp-head-info strong {
+  font-size: 14px;
+  color: #1a1a2e;
+  display: block;
+}
+
+.mp-head-info small {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.mp-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mp-status-dot.aktif {
+  background: #10b981;
+}
+.mp-status-dot.nonaktif {
+  background: #d1d5db;
+}
+
+/* ════════════════════════════════════════════
+   CARD BODY
+════════════════════════════════════════════ */
+.mp-card-body {
+  padding: 16px 18px;
+}
+
+.mp-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.mp-row:last-child {
+  margin-bottom: 0;
+}
+
+.mp-row-label {
+  width: 90px;
+  flex-shrink: 0;
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding-top: 1px;
+}
+
+.mp-row-val {
+  color: #374151;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.mp-nomor {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: 0.5px;
+}
+
+.mp-qr {
+  width: 100%;
+  max-width: 160px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  margin-top: 10px;
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.15s;
+}
+
+.mp-qr:hover {
+  transform: scale(1.03);
+}
+
+/* ════════════════════════════════════════════
+   CARD FOOTER
+════════════════════════════════════════════ */
+.mp-card-foot {
+  display: flex;
+  gap: 8px;
+  padding: 12px 18px;
+  border-top: 1px solid #f0f2f5;
+  flex-wrap: wrap;
+}
+
+/* ════════════════════════════════════════════
+   BADGE JENIS
+════════════════════════════════════════════ */
+.mp-jenis-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.mp-jenis-badge.bank {
+  background: #e8f0fe;
+  color: #1c638f;
+}
+.mp-jenis-badge.ewallet {
+  background: #d1fae5;
+  color: #065f46;
+}
+.mp-jenis-badge.qris {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* ════════════════════════════════════════════
+   FORM TAMBAH / EDIT
+════════════════════════════════════════════ */
+.mp-form-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.mp-form-card h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mp-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+}
+
+.mp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mp-field.full {
+  grid-column: 1 / -1;
+}
+
+.mp-field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.mp-field input,
+.mp-field select,
+.mp-field textarea {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1a1a2e;
+  font-family: inherit;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+  background: #fff;
+  width: 100%;
+}
+
+.mp-field input:focus,
+.mp-field select:focus,
+.mp-field textarea:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.mp-field .hint {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.mp-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ════════════════════════════════════════════
+   QR PREVIEW (sebelum upload)
+════════════════════════════════════════════ */
+.qr-preview-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.qr-preview {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  display: none;
+}
+
+.qr-preview.show {
+  display: block;
+}
+
+/* ════════════════════════════════════════════
+   MODAL ZOOM QR
+════════════════════════════════════════════ */
+.qr-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.qr-modal.open {
+  display: flex;
+}
+
+.qr-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .mp-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .mp-field.full {
+    grid-column: auto;
+  }
+  .mp-grid {
+    grid-template-columns: 1fr;
+  }
+}

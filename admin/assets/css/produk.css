@@ -1,0 +1,684 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 3%;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1d6fa5;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  padding: 20px 5%;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* 1. BAGIAN KIRI (Logo & Menu) */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.logo {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  opacity: 0.85;
+}
+.nav-links a.active {
+  color: #ffffff;
+  border-bottom: 3px solid #ffffff;
+  padding-bottom: 5px;
+}
+
+/* 2. BAGIAN TENGAH (Search Bar) */
+.nav-center {
+  flex: 0 1 500px;
+  margin: 0 50px;
+  min-width: 0;
+}
+
+.nav-search-form {
+  flex: 1 1 420px;
+  min-width: 0;
+  max-width: 600px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #f8f9fa;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+
+.nav-search-form:focus-within {
+  border-color: #1f508a;
+  background: #fff;
+}
+
+.nav-search-form input {
+  flex-grow: 1;
+  border: none;
+  padding: 11px 20px;
+  font-size: 14px;
+  outline: none;
+  background: transparent;
+}
+
+.nav-search-btn {
+  background: transparent;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+  color: #1d6fa5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-search-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav-guest-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-nav-login,
+.btn-nav-daftar {
+  text-decoration: none;
+  padding: 9px 22px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-nav-login {
+  color: #ffffff;
+  border: 1.5px solid #ffffff;
+  background: transparent;
+}
+
+.btn-nav-login:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-nav-daftar {
+  color: #1d6fa5;
+  background: #ffffff;
+}
+
+.btn-nav-daftar:hover {
+  background: #eef4f8;
+}
+
+.nav-guest-link {
+  display: none;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+/* 3. BAGIAN KANAN (Keranjang & Profil) */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-shrink: 0;
+}
+
+.cart-icon {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cart-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+
+.cart-icon:hover {
+  opacity: 0.8;
+}
+
+/* Kapsul Profil (Tanpa Lingkaran Avatar) */
+.profile-pill-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-pill {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Kotak Dropdown Profil */
+.profile-dropdown-card {
+  position: absolute;
+  top: 55px; /* Menggantung pas di bawah kapsul profil */
+  right: 0;
+  background-color: #ffffff;
+  border: 1.5px solid #2b6a94;
+  border-radius: 24px;
+  padding: 25px 20px;
+  width: 290px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none; /* Sembunyikan default */
+}
+
+.profile-dropdown-card.show {
+  display: block; /* Munculkan saat class .show aktif dari JS */
+}
+
+/* Isi Dropdown */
+.profile-dropdown-card .dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.profile-dropdown-card .avatar-large {
+  width: 58px;
+  height: 58px;
+  background-color: #cbd5e1;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.profile-dropdown-card .user-info-text h3 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+  line-height: 1.1;
+}
+.profile-dropdown-card .user-info-text p {
+  font-size: 13px;
+  color: #333;
+  margin: 4px 0 0 0;
+}
+.profile-dropdown-card .btn-lihat-profil {
+  display: block;
+  background: #1f508a;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.profile-dropdown-card .btn-lihat-profil:hover {
+  background: #163b66;
+}
+.profile-dropdown-card .dropdown-divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 12px 0;
+}
+.profile-dropdown-card .dropdown-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.profile-dropdown-card .dropdown-menu-list li a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  padding: 8px 10px;
+}
+.profile-dropdown-card .dropdown-menu-list li a.active-item,
+.profile-dropdown-card .dropdown-menu-list li a:hover {
+  background: #d9d9d9;
+  border-radius: 10px;
+}
+.profile-dropdown-card .btn-exit {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  padding: 6px 0 2px 0;
+}
+.profile-dropdown-card .btn-exit:hover {
+  text-decoration: underline;
+}
+
+/* Top Section & Filters */
+.top-section {
+  margin-bottom: 20px;
+}
+
+.page-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.page-info h2 {
+  font-size: 26px;
+  margin: 0 !important; /* Hapus margin bawaan */
+}
+
+.page-info p {
+  color: #666;
+  font-size: 18px;
+  margin: 0 !important;
+}
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-end;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.search-box {
+  display: flex;
+  flex-grow: 1;
+  min-width: 250px;
+  background: #f1f3f5;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.search-box input {
+  border: none;
+  background: transparent;
+  padding: 12px 20px;
+  width: 100%;
+  outline: none;
+}
+
+.btn-search {
+  border: none;
+  background: transparent;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.filter-box label {
+  display: block;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.filter-box select,
+.filter-box input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price-inputs input {
+  width: 120px;
+}
+
+.btn-apply,
+.btn-reset {
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+.btn-apply {
+  background: #1f508a;
+  color: white;
+}
+
+.btn-reset {
+  background: #e9ecef;
+  color: #495057;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 992px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .price-inputs input {
+    width: 100%;
+  }
+  .nav-container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .nav-links {
+    display: flex;
+  }
+  .nav-search-form {
+    order: 3;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card Styling */
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.product-card {
+  background: #dfdfdf; /* Warna silver card dari mockup */
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background-color: #ffffff; /* Biru solid fallback seperti pada mockup */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.product-price {
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #2b6a94; /* Adaptasi teks agar kontras */
+}
+
+.product-meta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 50px;
+}
+
+.page-btn {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.page-btn.active,
+.page-btn:hover {
+  background: #1f508a;
+  color: #fff;
+  border-color: #1f508a;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px;
+  background: #fff;
+  border-radius: 10px;
+  color: #777;
+}
+
+/* =========================================
+   BREADCRUMB STYLE
+   ========================================= */
+.breadcrumb {
+  font-size: 14px;
+  color: #6d7588;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Menghindari berantakan di layar hp */
+}
+
+.breadcrumb a {
+  color: #1d6fa5;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+  color: #136395;
+  text-decoration: underline;
+}
+
+/* Style khusus untuk teks halaman aktif/terakhir */
+.breadcrumb .current {
+  color: #31353b;
+  font-weight: 600;
+}
+
+/* Mengontrol spasi simbol panah secara konsisten berukuran pixel */
+.breadcrumb .separator {
+  margin: 0 10px;
+  color: #bfc9d9;
+  user-select: none; /* Simbol tidak ikut tersorot saat teks diblok */
+}
+
+.top-row {
+  display: flex !important;
+  justify-content: space-between !important; /* Melempar judul ke kiri, filter ke kanan */
+  align-items: flex-end !important; /* Meluruskan bagian bawah teks dan dropdown */
+  width: 100% !important;
+  margin-bottom: 20px !important; /* Jarak aman ke box form filter di bawahnya */
+}
+
+/* Reset total filter bar agar polosan nempel sejajar ke kanan */
+.top-filter-bar {
+  display: flex !important;
+  align-items: center !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  gap: 20px !important;
+  flex-wrap: wrap;
+}
+
+/* Membungkus Label + Dropdown */
+.top-filter-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Style Tulisan Label */
+.top-filter-label {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #444 !important;
+  margin: 0 !important;
+  white-space: nowrap; /* Mencegah teks terpotong/patah baris */
+}
+
+/* Style Kotak Dropdown Select */
+.top-filter-select {
+  padding: 8px 8px !important;
+  font-size: 14px !important;
+  color: #333 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #ccd1d9 !important;
+  border-radius: 6px !important;
+  outline: none !important;
+  cursor: pointer !important;
+  min-width: 180px !important;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s !important;
+}
+
+/* Efek saat Dropdown diklik / fokus */
+.top-filter-select:focus {
+  border-color: #1d6fa5 !important;
+  box-shadow: 0 0 0 3px rgba(29, 111, 165, 0.15) !important;
+}

@@ -1,0 +1,274 @@
+.profil-container {
+  padding-bottom: 60px;
+}
+
+/* ---- HEADER PROFIL ---- */
+.profil-header-card {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: linear-gradient(135deg, #1d6fa5, #1f508a);
+  border-radius: 14px;
+  padding: 30px;
+  margin-bottom: 35px;
+  color: #ffffff;
+}
+
+.profil-avatar-lg {
+  width: 84px;
+  height: 84px;
+  min-width: 84px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.profil-header-text h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.profil-nim {
+  font-size: 13px;
+  color: #d9ecf7;
+  margin-bottom: 10px;
+}
+
+/* ---- SECTION WRAPPER ---- */
+.profil-section {
+  margin-bottom: 40px;
+}
+
+.profil-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ---- TABEL DATA DIRI ---- */
+.profil-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.profil-info-table tr {
+  border-bottom: 1px solid #eee;
+}
+
+.profil-info-table tr:last-child {
+  border-bottom: none;
+}
+
+.profil-info-table td {
+  padding: 10px 6px;
+  color: #333;
+  vertical-align: top;
+}
+
+.profil-info-table td:first-child {
+  width: 200px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* ---- BADGE STATUS ---- */
+.profil-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.profil-badge-success {
+  background: #e6f4ea;
+  color: #1a7f42;
+}
+
+.profil-badge-warning {
+  background: #fef3c7;
+  color: #92610a;
+}
+
+.profil-badge-danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.profil-badge-info {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.profil-badge-teal {
+  background: #d7f4f2;
+  color: #007c85;
+}
+
+.profil-badge-secondary {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* ---- FOTO KTM ---- */
+.profil-ktm-box {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.profil-ktm-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.profil-ktm-thumb {
+  width: 220px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.profil-ktm-thumb:hover {
+  transform: scale(1.03);
+}
+
+/* ---- KEUNTUNGAN (HIGHLIGHT CARDS) ---- */
+.profil-keuntungan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.profil-highlight-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profil-highlight-icon {
+  font-size: 30px;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 50%;
+  background: #eef4f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profil-highlight-label {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.profil-highlight-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1d6fa5;
+}
+
+/* ---- PRODUK YANG DIMILIKI (pakai .product-card dari user_dashboard.css) ---- */
+.profil-product-card {
+  position: relative;
+}
+
+.profil-badge-float {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.profil-empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+.profil-empty-state p {
+  margin-bottom: 16px;
+}
+
+/* ---- MODAL ZOOM KTM ---- */
+.profil-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.profil-modal-overlay.show {
+  display: flex;
+}
+
+.profil-modal-box {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.profil-modal-box img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 8px;
+}
+
+.profil-modal-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 992px) {
+  .profil-keuntungan-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .profil-header-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profil-info-table td:first-child {
+    width: 140px;
+  }
+
+  .profil-keuntungan-grid {
+    grid-template-columns: 1fr;
+  }
+}

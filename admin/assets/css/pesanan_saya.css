@@ -1,0 +1,499 @@
+/* ========================================================================
+   1. IMPORT FONTS & SYSTEM VARIABLES (Sinkron dengan Tagihan)
+   ======================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #1c638f;
+  --primary-hover: #154d70;
+  --bg-color: #f4f6f9;
+  --card-bg: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --price-color: #e02424;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.25s ease;
+
+  /* State Colors Premium */
+  --status-success-bg: #ecfdf5;
+  --status-success-text: #065f46;
+  --status-warning-bg: #fffbe6;
+  --status-warning-text: #92400e;
+  --status-info-bg: #eff6ff;
+  --status-info-text: #1e40af;
+  --status-danger-bg: #fef2f2;
+  --status-danger-text: #991b1b;
+  --status-secondary-bg: #f3f4f6;
+  --status-secondary-text: #374151;
+}
+
+/* ========================================================================
+   2. BASE LAYOUT & EFFICIENCY RESET
+   ======================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 20px 16px; /* Padding luar diperkecil agar compact */
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+  max-width: 900px; /* Sedikit lebih lebar dari detail tagihan agar muat 3 kolom internal */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Jarak antar komponen dipersempit */
+}
+
+/* ========================================================================
+   3. COMPACT TOP HEADER
+   ======================================================================== */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.btn-back:hover {
+  color: var(--primary-hover);
+  transform: translateX(-3px);
+}
+
+.page-title {
+  font-size: 20px; /* Tidak terlalu besar agar hemat ruang vertikal */
+  font-weight: 700;
+}
+
+.username {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: #e2e8f0;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ========================================================================
+   4. SCROLLABLE TAB FILTER (Modern Sub-Navigation)
+   ======================================================================== */
+.tab-filter {
+  display: flex;
+  background: var(--card-bg);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  overflow-x: auto; /* Aman di mobile jika menu memanjang */
+  white-space: nowrap;
+  gap: 4px;
+}
+
+/* Sembunyikan scrollbar bawaan agar sleek */
+.tab-filter::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.tab-item:hover {
+  color: var(--text-main);
+  background: #f8fafc;
+}
+
+.tab-item.active {
+  background: var(--primary-color);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.tab-count {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-muted);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.tab-item.active .tab-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* ========================================================================
+   5. HIGH-DENSITY ORDER CARDS (List Pesanan)
+   ======================================================================== */
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  padding: 14px; /* Padding dipangkas dari 24px ke 14px */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Card Header: Info Invoice & Tanggal */
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--border-color); /* Dashed border memberikan impresi bon/invoice */
+  padding-bottom: 8px;
+  font-size: 13px;
+}
+
+.order-invoice {
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.order-invoice i {
+  color: var(--primary-color);
+}
+
+.order-date {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Card Body: Info Produk Terintegrasi */
+.order-card-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.order-product-img img {
+  width: 68px; /* Dikecilkan sedikit dari 90px agar pas dengan teks yang padat */
+  height: 68px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.order-product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Jarak baris info sangat rapat */
+}
+
+.order-product-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+.order-seller,
+.order-shipping {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.order-seller i,
+.order-shipping i {
+  width: 14px;
+  text-align: center;
+}
+
+/* Kolom Status & Harga (Sejajar di Kanan) */
+.order-status-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 160px;
+}
+
+.order-total {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* ========================================================================
+   6. PREMIUM LUXURY BADGES (Pemetaan Kelas PHP)
+   ======================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Outline style mapping untuk status transaksi */
+.badge-outline {
+  background: transparent !important;
+  border-style: solid;
+  border-width: 1px;
+}
+
+/* Alokasi dinamis berdasarkan class bootstrap-like dari PHP */
+.badge-warning {
+  background-color: var(--status-warning-bg);
+  color: var(--status-warning-text);
+  border: 1px solid rgba(146, 64, 14, 0.15);
+}
+.badge-outline.badge-warning {
+  border-color: var(--status-warning-text);
+}
+
+.badge-info,
+.badge-primary {
+  background-color: var(--status-info-bg);
+  color: var(--status-info-text);
+  border: 1px solid rgba(30, 64, 175, 0.15);
+}
+.badge-outline.badge-info,
+.badge-outline.badge-primary {
+  border-color: var(--status-info-text);
+}
+
+.badge-success {
+  background-color: var(--status-success-bg);
+  color: var(--status-success-text);
+  border: 1px solid rgba(6, 95, 70, 0.15);
+}
+.badge-outline.badge-success {
+  border-color: var(--status-success-text);
+}
+
+.badge-danger {
+  background-color: var(--status-danger-bg);
+  color: var(--status-danger-text);
+  border: 1px solid rgba(153, 27, 27, 0.15);
+}
+.badge-outline.badge-danger {
+  border-color: var(--status-danger-text);
+}
+
+.badge-secondary {
+  background-color: var(--status-secondary-bg);
+  color: var(--status-secondary-text);
+  border: 1px solid rgba(55, 65, 81, 0.15);
+}
+.badge-outline.badge-secondary {
+  border-color: var(--status-secondary-text);
+}
+
+/* ========================================================================
+   7. ACTION BUTTONS FOOTER
+   ======================================================================== */
+.order-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 10px;
+}
+
+/* Base button properties */
+.order-card-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn-detail {
+  background-color: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.btn-detail:hover {
+  background-color: #e2e8f0;
+}
+
+.btn-bayar {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(28, 99, 143, 0.1);
+}
+
+.btn-bayar:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-wa {
+  background-color: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.btn-wa:hover {
+  background-color: #d1fae5;
+}
+
+/* ========================================================================
+   8. EMPTY STATE & RESPONSIVE BREAKPOINTS
+   ======================================================================== */
+.empty-state {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.empty-state i {
+  font-size: 40px;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.btn-belanja {
+  display: inline-flex;
+  padding: 8px 20px;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+}
+
+/* Responsivitas untuk Layar HP */
+@media (max-width: 640px) {
+  body {
+    padding: 12px 8px;
+  }
+
+  .order-card-body {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .order-product-img img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .order-status-col {
+    align-items: flex-start;
+    min-width: 100%;
+    border-top: 1px dashed #f1f5f9;
+    padding-top: 8px;
+  }
+
+  .order-card-footer {
+    justify-content: space-between;
+  }
+
+  .order-card-footer a {
+    flex: 1;
+    justify-content: center;
+    font-size: 12px;
+    padding: 8px 4px; /* Stack tombol lebar penuh rata */
+  }
+}
+.btn-batal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #fca5a5;
+  background: #fff0f0;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-batal:hover {
+  background: #fee2e2;
+}
+
+.order-alert {
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.order-alert-success {
+  background: #d1fae5;
+  color: #065f46;
+}
+.order-alert-warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+.order-alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+}

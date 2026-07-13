@@ -1,0 +1,325 @@
+:root {
+  --primary-blue: #0f4c81;
+  --hover-blue: #1e6fb9;
+  --bg-color: #f5f7fa;
+  --white: #ffffff;
+  --text-dark: #2c3e50;
+  --text-muted: #6b7280;
+  --border-color: #e2e8f0;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Container & Header */
+.bayar-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.page-header {
+  margin-bottom: 25px;
+}
+
+.btn-back {
+  display: inline-block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.btn-back:hover {
+  color: var(--primary-blue);
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+  color: var(--primary-blue);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Alert */
+.alert {
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.alert-danger {
+  background-color: #fee2e2;
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+/* Grid Layout */
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 25px;
+}
+
+/* Card Base */
+.card {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  padding: 25px;
+  margin-bottom: 25px;
+  border: 1px solid var(--border-color);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Info Produk Card */
+.info-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.product-image-box {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.product-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 6px;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row .label {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.detail-row .value {
+  text-align: right;
+  font-size: 0.95rem;
+}
+
+.strong {
+  font-weight: 600;
+}
+.text-blue {
+  color: var(--primary-blue);
+  font-size: 1.05rem;
+}
+
+.badge-warning {
+  background: #fef3c7;
+  color: #d97706;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* QRIS Card */
+.qris-card {
+  text-align: center;
+}
+
+.instruction {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.qris-image-wrapper {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px dashed var(--border-color);
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.qris-image-wrapper img {
+  max-width: 200px;
+  border-radius: 8px;
+}
+
+.nominal-box {
+  background: #e0f2fe;
+  padding: 15px;
+  border-radius: 12px;
+  color: var(--primary-blue);
+}
+
+.nominal-box span {
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.nominal-box h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Upload Form Card */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.file-upload-wrapper input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #f8fafc;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  resize: vertical;
+  outline: none;
+}
+textarea:focus {
+  border-color: var(--primary-blue);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-submit:hover {
+  background: var(--hover-blue);
+}
+
+/* Preview Box */
+.hidden {
+  display: none !important;
+}
+.preview-container {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  text-align: center;
+}
+.preview-title {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+#preview-image {
+  max-width: 100%;
+  max-height: 250px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+#preview-pdf {
+  color: var(--danger);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+#preview-pdf i {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .right-column {
+    grid-row: 1;
+  } /* QRIS naik ke atas pada layar HP */
+  .left-column {
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 500px) {
+  .info-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .product-details {
+    width: 100%;
+  }
+}

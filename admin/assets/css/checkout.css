@@ -1,0 +1,421 @@
+/* ========================================================================
+   1. IMPORT FONTS & VARIABLES
+   ======================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #1c638f;
+  --primary-hover: #154d70;
+  --bg-color: #f4f6f9;
+  --card-bg: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --price-color: #e02424;
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+/* ========================================================================
+   2. GLOBAL RESETS
+   ======================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 40px 20px;
+  line-height: 1.5;
+}
+
+/* ========================================================================
+   3. COMPONENTS (CONTAINER, TITLE, BUTTON BACK)
+   ======================================================================== */
+.checkout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 24px;
+  transition: var(--transition);
+}
+
+.btn-back:hover {
+  color: var(--primary-hover);
+  transform: translateX(-4px);
+}
+
+.page-title {
+  margin-bottom: 32px;
+}
+
+.page-title h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.page-title p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* ========================================================================
+   4. CARD STYLE
+   ======================================================================== */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0; /* Jarak antar-card sekarang dikontrol oleh form-gap */
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.card-header i {
+  color: var(--primary-color);
+}
+
+/* ========================================================================
+   5. INFORMASI PRODUK
+   ======================================================================== */
+.product-info {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.product-info img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.product-detail {
+  flex: 1;
+}
+
+.product-detail h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.product-detail table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-detail table td {
+  padding: 4px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.product-detail table td:first-child {
+  width: 95px;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.product-detail .price {
+  color: var(--price-color);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ========================================================================
+   6. ALAMAT PENGIRIMAN & MAPS
+   ======================================================================== */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: var(--transition);
+  background-color: #ffffff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(28, 99, 143, 0.1);
+}
+
+#map {
+  width: 100%;
+  height: 350px;
+  background-color: #e5e7eb;
+  border-radius: 8px;
+  margin: 16px 0;
+  border: 1px solid var(--border-color);
+}
+
+.coordinate-box {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.coordinate-item {
+  flex: 1;
+}
+
+.coordinate-item input {
+  background-color: #f9fafb !important;
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.btn-location {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background-color: #f3f4f6;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-location:hover {
+  background-color: #e5e7eb;
+}
+
+/* ========================================================================
+   7. RADIO SELECTION (METODE PENGIRIMAN & PEMBAYARAN)
+   ======================================================================== */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.radio-item:hover {
+  background-color: #f9fafb;
+  border-color: var(--primary-color);
+}
+
+.radio-item input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* ========================================================================
+   8. RINGKASAN PEMBAYARAN & BUTTON ACTION
+   ======================================================================== */
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.summary-table td {
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.summary-table td.text-right {
+  text-align: right;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.summary-table .total-row td {
+  border-top: 1px dashed var(--border-color);
+  padding-top: 16px;
+  margin-top: 8px;
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 16px;
+}
+
+.summary-table .total-price {
+  color: var(--primary-color) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
+.checkout-action {
+  margin-top: 8px;
+}
+
+.btn-checkout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(28, 99, 143, 0.2);
+}
+
+.btn-checkout:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 6px 16px rgba(28, 99, 143, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ========================================================================
+   9. BASE LAYOUT UTAMA (MOBILE-FIRST)
+   ======================================================================== */
+#checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.checkout-left,
+.checkout-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+/* ========================================================================
+   10. MULTI-COLUMN LAYOUT SYSTEM (DESKTOP LAPTOP >= 992px)
+   ======================================================================== */
+@media (min-width: 992px) {
+  #checkoutForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .checkout-left {
+    width: 58%;
+  }
+
+  .checkout-right {
+    width: 39%;
+    /* 📌 Properti sticky dihapus agar sisi kanan tidak ikut melayang turun saat di-scroll */
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-group label {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.form-group select {
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  padding: 11px 16px;
+  font-size: 14.5px;
+  color: var(--text-main);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: var(--transition);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+}
+
+.form-group select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(28, 99, 143, 0.12);
+}
+
+.form-group select option {
+  color: var(--text-main);
+  background-color: var(--card-bg);
+}
+
+.form-hint {
+  font-family: "Inter", sans-serif;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  display: block;
+  margin-top: 2px;
+}
